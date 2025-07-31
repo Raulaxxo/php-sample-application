@@ -1,0 +1,12 @@
+FROM mariadb:10.4
+
+# Set environment variables
+ENV MYSQL_ROOT_PASSWORD=root
+ENV MYSQL_DATABASE=sample
+ENV MYSQL_USER=sampleuser
+ENV MYSQL_PASSWORD=samplepass
+
+# Copy the database initialization script
+COPY sql/db.sql /docker-entrypoint-initdb.d/
+
+# Expose port

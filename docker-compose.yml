@@ -1,0 +1,32 @@
+#version: "3.8"
+
+services:
+  app:
+    image: raulaxxo/php-sample-application:prueba
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    environment:
+      APPLICATION_HOST_NAME: localhost
+      DB_HOST: db
+      DB_DATABASE: sample
+      DB_USERNAME: sampleuser
+      DB_PASSWORD: samplepass
+
+  db:
+    image: raulaxxo/mariadb-10.4:prueba
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sample
+      MYSQL_USER: sampleuser
+      MYSQL_PASSWORD: samplepass
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
