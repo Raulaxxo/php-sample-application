@@ -10,3 +10,4 @@ ENV MYSQL_PASSWORD=samplepass
 COPY sql/db.sql /docker-entrypoint-initdb.d/
 
 # Expose port
+EXPOSE 3306
