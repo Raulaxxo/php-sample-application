@@ -27,7 +27,7 @@ WORKDIR /var/www/html
 RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html && composer install
 
 EXPOSE 80
-EXPOSE 443
+#EXPOSE 443
 
 CMD ["apache2-foreground"]
 
